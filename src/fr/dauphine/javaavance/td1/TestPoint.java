@@ -1,5 +1,5 @@
 package fr.dauphine.javaavance.td1;
 
-public class test {
+public class TestPoint {
 
 }
