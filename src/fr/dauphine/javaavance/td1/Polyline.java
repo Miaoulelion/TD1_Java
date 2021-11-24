@@ -1,15 +1,16 @@
 package fr.dauphine.javaavance.td1;
 
-import java.util.ArrayList;
+
+import java.util.LinkedList;
 import java.util.List;
 
 public class Polyline {
-	private ArrayList<Point> listPoints;
+	private LinkedList<Point> listPoints;
 	private final int pointCapacity;
 	
-	
+	//int array[]= new int[nbr];
 	public Polyline(int pointCapacity) {
-		listPoints=new ArrayList<Point>();
+		listPoints=new LinkedList<Point>();
 		this.pointCapacity=pointCapacity;
 	}
 	
