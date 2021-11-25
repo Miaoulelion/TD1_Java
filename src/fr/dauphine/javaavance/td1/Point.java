@@ -37,6 +37,11 @@ public class Point {
 		return false;
 	}
 	
+	public void translate(int dx, int dy) {
+		this.x+=dx;
+		this.y+=dy;
+	}
+	
 	@Override
 	public String toString() {
 		return this.x + " " + this.y;
