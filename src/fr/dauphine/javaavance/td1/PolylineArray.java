@@ -1,5 +1,7 @@
 package fr.dauphine.javaavance.td1;
 
+import java.util.Objects;
+
 public class PolylineArray {
 	private final int pointCapacity;
 	private Point array[];
@@ -21,6 +23,7 @@ public class PolylineArray {
 	}
 	
 	public void add(Point p) {
+		Objects.requireNonNull(p);
 		this.array[this.newIndex]=p;
 		++this.newIndex;
 	}

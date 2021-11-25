@@ -31,8 +31,12 @@ public class TestPoint {
 		PolylineArray pLine = new PolylineArray(2);
 		pLine.add(p1);
 		//pLine.add(new Point(4,4));
-		pLine.add(null);
+		//pLine.add(null);
 		
+		Circle c=new Circle(new Point(1,2), 1); 
+		c.getCenter().translate(1,1); 
+		System.out.println(c);
+
 
 		
 		

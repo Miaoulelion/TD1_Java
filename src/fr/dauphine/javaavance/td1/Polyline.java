@@ -24,10 +24,12 @@ public class Polyline {
 	}
 	
 	public void add(Point p) {
+		Objects.requireNonNull(p);
 		this.listPoints.add(p);
 	}
 	
 	public void add(List<Point> listPoint) {
+		Objects.requireNonNull(listPoint);
 		this.listPoints.addAll(listPoint);
 	}
 	
@@ -37,7 +39,7 @@ public class Polyline {
 	}
 	
 	public boolean contains(Point p1) {
-		Objects.nonNull(p1);
+		Objects.requireNonNull(p1);
 		return this.listPoints.contains(p1);
 	}
 
