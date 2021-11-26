@@ -33,6 +33,7 @@ public class Circle {
 	}
 	
 	public boolean contains(Point p) {
+		Objects.requireNonNull(p);
 		double distance = Math.sqrt((Math.pow(p.getX()-center.getX(), 2.0)+Math.pow(p.getY()-center.getY(), 2.0)));
 		if(distance>this.radius) { //radius is automatically casted into double.
 			return false;
@@ -41,6 +42,8 @@ public class Circle {
 	}
 	
 	public static boolean contains(Point p, Circle...circles) {
+		Objects.requireNonNull(p);
+		Objects.requireNonNull(circles);
 		for(Circle c : circles) {
 			if(c.contains(p)){
 				return true;

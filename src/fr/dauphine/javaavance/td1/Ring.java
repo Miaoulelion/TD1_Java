@@ -23,6 +23,7 @@ public class Ring {
 	}
 
 	public boolean contains(Point p) {
+		Objects.requireNonNull(p);
 		if(Circle.contains(p, this.outCircle)&&
 				!Circle.contains(p, this.inCircle)){
 			return true;
@@ -31,6 +32,8 @@ public class Ring {
 	}
 	
 	public static boolean contains(Point p, Ring...rings) {
+		Objects.requireNonNull(p);
+		Objects.requireNonNull(rings);
 		for(Ring r : rings) {
 			if(r.contains(p)) {
 				return true;

@@ -10,11 +10,13 @@ public class Polyline {
 
 
 	public Polyline(List<Point> listPoint) {
+		Objects.requireNonNull(listPoint);
 		this.listPoints =new LinkedList<Point>();
 		this.add(listPoint);
 	}
 	
 	public Polyline(Point p) {
+		Objects.requireNonNull(p);
 		this.listPoints =new LinkedList<Point>();
 		this.add(p);
 	}

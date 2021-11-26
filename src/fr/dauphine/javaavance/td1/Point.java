@@ -1,5 +1,7 @@
 package fr.dauphine.javaavance.td1;
 
+import java.util.Objects;
+
 public class Point {
 	private int x;
 	private int y;
@@ -12,6 +14,7 @@ public class Point {
 	}
 	
 	public Point (Point p2) {
+		Objects.requireNonNull(p2);
 		this.x=p2.getX();
 		this.y=p2.getY();
 		++cpt;
@@ -31,6 +34,7 @@ public class Point {
 	}
 	
 	public boolean isSameAs(Point p) {
+		Objects.requireNonNull(p);
 		if(p.getX()==this.x && p.getY()==this.y) {
 			return true;
 		}

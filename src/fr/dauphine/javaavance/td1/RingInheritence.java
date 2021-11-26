@@ -1,5 +1,7 @@
 package fr.dauphine.javaavance.td1;
 
+import java.util.Objects;
+
 public class RingInheritence extends Circle{
 	private Circle outCircle;
 
@@ -20,7 +22,9 @@ public class RingInheritence extends Circle{
 		return false;
 	}
 	
-	public boolean contains(Point p, RingInheritence...rings) {
+	public static boolean contains(Point p, RingInheritence...rings) {
+		Objects.requireNonNull(p);
+		Objects.requireNonNull(rings);
 		for(RingInheritence r : rings) {
 			if(r.contains(p)) {
 				return true;
