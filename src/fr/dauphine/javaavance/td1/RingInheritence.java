@@ -12,7 +12,6 @@ public class RingInheritence extends Circle{
 		this.outCircle= new Circle(center, outRadius);
 	}
 	
-	
 	public boolean contains(Point p) {
 		if(Circle.contains(p, this.outCircle)&&
 				!super.contains(p)) {
@@ -38,6 +37,32 @@ public class RingInheritence extends Circle{
 	public String toString() {
 		return "RingInheritence [inRadius=" + super.getradius() + ", outRadius=" + this.outCircle.getradius() + ", area="+this.area() +"]";
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((outCircle == null) ? 0 : outCircle.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		RingInheritence other = (RingInheritence) obj;
+		if (outCircle == null) {
+			if (other.outCircle != null)
+				return false;
+		} else if (!outCircle.equals(other.outCircle))
+			return false;
+		return true;
+	}
+	
 	
 
 }
