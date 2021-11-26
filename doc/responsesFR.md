@@ -42,7 +42,7 @@ On voit les différentes possibilités à faire ressemblant au texte “set”. 
 
 
 
-## Exercice 2 : 
+## Exercice 2
 
 
 
@@ -115,7 +115,7 @@ Un champ static de type int peut être ajouté à la classe Point. Ce champ s'in
 	}
 
 
-## Exercice 3 : 
+## Exercice 3
 
 **1. What does this code print ? Why ?**
 
@@ -135,7 +135,7 @@ Un champ static de type int peut être ajouté à la classe Point. Ce champ s'in
 => Le problème est qu’on va faire list.indexOf(p3) alors que ce point n’est pas dans la liste. De plus, on l’appel list.indexOf(p2) va retourner true car p1 et p2 sont le “même” objet (ils partagent le même espace mémoire). La méthode equals() est appelée dans la méthode indexOf().
 Ainsi, pour résoudre ce problème, il faut implémenter les méthodes equals() et hashcode() pour la classe Point, ce qui permet à la méthode indexOf() de List d’identifier les instances de Point “égales”.
 
-##Exercice 4 : 
+## Exercice 4
 
 **Write a method add that can be used to add a new point to the line. What happens if we add more points that the maximum capacity of the array ? What to do about it ?**
 
@@ -159,7 +159,7 @@ Enfin, pour la méthode nbPoints(), nous pouvons utiliser la méthode size() de 
 	}
 Cela renverra le nombre de Point contenu dans la liste de Polyline.
 
-## Exercice 5 :
+## Exercice 5
 
 **1. Add a method translate(dx, dy) in Point. What are the different options to write this method ?**
 
@@ -256,7 +256,7 @@ Résultat du Syso après modification : Circle [center=1 2, radius=1]
 		return false;
 	}
 
-## Exercice 6 : 
+## Exercice 6
 
 **1. Should you use inheritance ?**
 
