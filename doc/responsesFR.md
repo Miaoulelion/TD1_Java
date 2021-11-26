@@ -6,7 +6,9 @@
 => On voit les méthodes possibles ressemblant au texte “sysout”. Si on appuie sur “Enter”, cela colle System.out.println();
 
 **3. Same question with toStr then Ctrl + space inside a class ?**
+
 =>  On voit les méthodes possibles ressemblant au texte “toStr”. Si on appuie sur “Enter”, la structure de la méthode toString() est créée :
+
 @Override
 public String toString() {
 	TODO();
@@ -39,8 +41,8 @@ On voit les différentes possibilités à faire ressemblant au texte “set”. 
 
 
 **1. Why does it work ?**
-Create a new class Point with two private fields x and y. Add a method with
-the following code :
+Create a new class Point with two private fields x and y. Add a method with the following code :
+
 Point p=new Point();
 System.out.println(p.x+" "+p.y)
 
@@ -179,6 +181,7 @@ On peut créer une méthode void qui somme les valeurs des coordonnées de notre
 	}
 
 **5. What is the problem with this code ? How to avoid it ?**
+
 Point p=new Point(1,2); 
 Circle c=new Circle(p,1); 
 Circle c2=new Circle(p,2); 
@@ -198,6 +201,7 @@ public Circle(Point center, int radius) {
 }
 
 **6. What would be the problem with a getCenter() method that would return the center ? To find out, consider the following code ?**
+
 Circle c=new Circle(new Point(1,2), 1); 
 c.getCenter().translate(1,1); 
 System.out.println(c);
