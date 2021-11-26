@@ -3,6 +3,7 @@
 **1. Create a new project called JavaAvance and add a new package called fr.dauphine.javaavance.td1.**
 
 **2. What happens when you type sysout and press Ctrl + space in a main method ?**
+
 => On voit les méthodes possibles ressemblant au texte “sysout”. Si on appuie sur “Enter”, cela colle System.out.println();
 
 **3. Same question with toStr then Ctrl + space inside a class ?**
@@ -24,13 +25,16 @@
 	}
 
 **5. Create a new int field called foo inside the class. What happens if you type Ctrl + space inside the class, what if you now type set then press Ctrl + space ?**
+
 => On voit les méthodes possibles à implémenter. On voit notamment que Eclipse nous propose de créer les méthodes getFoo() et setFoo(int). 
 On voit les différentes possibilités à faire ressemblant au texte “set”. On voit donc qu’il nous propose de créer la méthode setFoo(int).
 
 **6. Select the class name. Que What happens if you type Alt+Shift+R ? Samequestion with the int field foo.**
+
 => Cela permet de refactoriser le nom de la classe. Plus simplement, cela permet de changer le nom de la classe en mettant à jour toutes les références de cette classe. On peut également refactoriser le champ foo qui changera toutes les références de cette variable pour ne pas avoir d’erreur.
 
-**7. (at home) It is sometime useful to check the source code from the JDK. Down-load the file called src.zip from Oracle's website. (on CRIO desktop stations it is already installed in /usr/local/jdk*/src.zip) and attach it in Window - Preferences { Installed JREs - Edit - rt.jar - Source Attachment. Now declare a String variable and clic on String with Ctrl key pressed. What happens ?**
+**7. (at home) It is sometime useful to check the source code from the JDK. Down-load the file called src.zip from Oracle's website and attach it in Window - Preferences { Installed JREs - Edit - rt.jar - Source Attachment. Now declare a String variable and clic on String with Ctrl key pressed. What happens ?**
+
 => Cela nous mène à la classe String où on peut voir toutes les méthodes associés etc...
 
 
@@ -43,6 +47,7 @@ On voit les différentes possibilités à faire ressemblant au texte “set”. 
 
 
 **1. Why does it work ?**
+
 Create a new class Point with two private fields x and y. Add a method with the following code :
 
 	Point p=new Point();
