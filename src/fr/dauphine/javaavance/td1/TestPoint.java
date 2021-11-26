@@ -37,9 +37,8 @@ public class TestPoint {
 		c.getCenter().translate(1,1); 
 		System.out.println(c);
 
-
-		
-		
+		RingInheritence r = new RingInheritence(p1, 2, 3);
+		System.out.println(r);
 
 
 	}

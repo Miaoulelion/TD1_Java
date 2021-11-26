@@ -6,9 +6,8 @@ public class Ring {
 	private Circle inCircle;
 	private Circle outCircle;
 	
-	
 	public Ring(Point center, int inRadius, int outRadius) {
-		if((inRadius<=0||outRadius<=0)&&
+		if((inRadius<=0||outRadius<=0)||
 				inRadius<outRadius) {
 			throw new IllegalArgumentException();
 		}

@@ -14,6 +14,10 @@ public class Circle {
 		this.center=new Point(center.getX(), center.getY());
 		this.radius=radius;
 	}
+	
+	public int getradius() {
+		return this.radius;
+	}
 
 	public void translate(int dx, int dy) {
 		this.center.translate(dx, dy);
