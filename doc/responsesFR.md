@@ -1,4 +1,4 @@
-##Exercice 1
+## Exercice 1
 
 **1. Create a new project called JavaAvance and add a new package called fr.dauphine.javaavance.td1.**
 
@@ -34,7 +34,7 @@ On voit les différentes possibilités à faire ressemblant au texte “set”. 
 
 
 
-##Exercice 2 : 
+## Exercice 2 : 
 
 
 
@@ -106,7 +106,7 @@ public class Point {
 	}
 
 
-##Exercice 3 : 
+## Exercice 3 : 
 
 **1. What does this code print ? Why ?**
 
@@ -150,7 +150,7 @@ Enfin, pour la méthode nbPoints(), nous pouvons utiliser la méthode size() de 
 	}
 Cela renverra le nombre de Point contenu dans la liste de Polyline.
 
-##Exercice 5 :
+## Exercice 5 :
 
 **1. Add a method translate(dx, dy) in Point. What are the different options to write this method ?**
 
@@ -245,7 +245,7 @@ Résultat du Syso après modification : Circle [center=1 2, radius=1]
 		return false;
 	}
 
-##Exercice 6 : 
+## Exercice 6 : 
 
 **1. Should you use inheritance ?**
 
