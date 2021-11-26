@@ -38,6 +38,37 @@ public class Ring {
 		}
 		return false;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((inCircle == null) ? 0 : inCircle.hashCode());
+		result = prime * result + ((outCircle == null) ? 0 : outCircle.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Ring other = (Ring) obj;
+		if (inCircle == null) {
+			if (other.inCircle != null)
+				return false;
+		} else if (!inCircle.equals(other.inCircle))
+			return false;
+		if (outCircle == null) {
+			if (other.outCircle != null)
+				return false;
+		} else if (!outCircle.equals(other.outCircle))
+			return false;
+		return true;
+	}
 	
 	
 
