@@ -9,17 +9,19 @@
 
 =>  On voit les méthodes possibles ressemblant au texte “toStr”. Si on appuie sur “Enter”, la structure de la méthode toString() est créée :
 
-@Override
-public String toString() {
-	TODO();
-	return super.toString();
-}
+	@Override
+	public String toString() {
+		TODO();
+		return super.toString();
+	}
 
 **4. Same question with main then Ctrl + space inside a class ?**
+
 => On voit les méthodes possibles ressemblant au texte “main”. Si on appuie sur “Enter”, la méthode main est créée : 
-public static void main(String[] args) {
-	
-}
+
+	public static void main(String[] args) {
+		
+	}
 
 **5. Create a new int field called foo inside the class. What happens if you type Ctrl + space inside the class, what if you now type set then press Ctrl + space ?**
 => On voit les méthodes possibles à implémenter. On voit notamment que Eclipse nous propose de créer les méthodes getFoo() et setFoo(int). 
@@ -43,8 +45,8 @@ On voit les différentes possibilités à faire ressemblant au texte “set”. 
 **1. Why does it work ?**
 Create a new class Point with two private fields x and y. Add a method with the following code :
 
-Point p=new Point();
-System.out.println(p.x+" "+p.y)
+	Point p=new Point();
+	System.out.println(p.x+" "+p.y)
 
 => Cela fonctionne car les champs privés d’une classe sont accessibles à l’intérieur de celle-ci. Ainsi, on peut créer une méthode utilisant x et y à l’intérieur de l’objet Point.
 
@@ -76,23 +78,23 @@ System.out.println(p.x+" "+p.y)
 
 Un champ static de type int peut être ajouté à la classe Point. Ce champ s'incrémente à chaque instanciation de la classe. Un accessor doit être ajouté (getcpt()) pour accéder à la valeur du compteur en dehors de la classe.
 
-public class Point {
-	private int x;
-	private int y;
-	private static int cpt=0;
-	
-	public Point(int x, int y) {
-		this.x=x;
-		this.y=y;
-		++cpt;
+	public class Point {
+		private int x;
+		private int y;
+		private static int cpt=0;
+		
+		public Point(int x, int y) {
+			this.x=x;
+			this.y=y;
+			++cpt;
+		}
+		
+		public Point (Point p2) {
+			this.x=p2.getX();
+			this.y=p2.getY();
+			++cpt;
+		}
 	}
-	
-	public Point (Point p2) {
-		this.x=p2.getX();
-		this.y=p2.getY();
-		++cpt;
-	}
-}
 
 **8. Write a second contructor with a single Point p2 argument that copies the coordinates from p2 into the current Point. How does the compiler know which constructor to call ?**
 
@@ -182,29 +184,29 @@ On peut créer une méthode void qui somme les valeurs des coordonnées de notre
 
 **5. What is the problem with this code ? How to avoid it ?**
 
-Point p=new Point(1,2); 
-Circle c=new Circle(p,1); 
-Circle c2=new Circle(p,2); 
-c2.translate(1,1); 
-System.out.println(c+" "+c2);
+	Point p=new Point(1,2); 
+	Circle c=new Circle(p,1); 
+	Circle c2=new Circle(p,2); 
+	c2.translate(1,1); 
+	System.out.println(c+" "+c2);
 
 => Le problème avec ce code est que les deux cercles ont le même Point pour centre. Ainsi, lors de l’utilisation de la méthode translate() par le Cercle c2, cela entraîne également la translation de c1.
 Pour résoudre ce problème, on pourrait créer une copie du Point passé en paramètre lors de la création du cercle. Ainsi, les centres de c1 et c2 auraient des adresses mémoires différentes.
 
-public Circle(Point center, int radius) {
-	if(radius<=0) {
-		throw new IllegalArgumentException("Circle() : radius can't be negative.");
+	public Circle(Point center, int radius) {
+		if(radius<=0) {
+			throw new IllegalArgumentException("Circle() : radius can't be negative.");
+		}
+		Objects.requireNonNull(center);
+		this.center=new Point(center.getX(), center.getY());
+		this.radius=radius;
 	}
-	Objects.requireNonNull(center);
-	this.center=new Point(center.getX(), center.getY());
-	this.radius=radius;
-}
 
 **6. What would be the problem with a getCenter() method that would return the center ? To find out, consider the following code ?**
 
-Circle c=new Circle(new Point(1,2), 1); 
-c.getCenter().translate(1,1); 
-System.out.println(c);
+	Circle c=new Circle(new Point(1,2), 1); 
+	c.getCenter().translate(1,1); 
+	System.out.println(c);
 
 => Résultat du Syso :
 Circle [center=2 3, radius=1]
@@ -255,14 +257,14 @@ Résultat du Syso après modification : Circle [center=1 2, radius=1]
 
 => Nous pourrions utiliser l’héritage pour créer la classe Ring en la faisant hériter de Circle. En effet, un Ring a lui aussi un rayon (même deux, un pour chaque cercle le constituant), un centre, une aire et peut également se translater. Avec l’héritage, notre constructeur créerait un Circle grâce au super constructeur, et un second Circle qui serait contenu dans la nouvelle classe (cf. classe RingInheritance). 
 
-public RingInheritence(Point center, int inRadius, int outRadius) {
-	super(center, inRadius);
-	if((inRadius<=0||outRadius<=0)||
-			inRadius>=outRadius) {
-		throw new IllegalArgumentException("RingInheritence() : inRadius = "+inRadius + " outRadius="+outRadius);
+	public RingInheritence(Point center, int inRadius, int outRadius) {
+		super(center, inRadius);
+		if((inRadius<=0||outRadius<=0)||
+				inRadius>=outRadius) {
+			throw new IllegalArgumentException("RingInheritence() : inRadius = "+inRadius + " outRadius="+outRadius);
+		}
+		this.outCircle= new Circle(center, outRadius);
 	}
-	this.outCircle= new Circle(center, outRadius);
-}
 
 
 L’avantage de l’héritage est de factoriser le code. Toutefois, cette manière de procéder nous fera implémenter une nouvelle version des méthodes toString() et area() car elles ne sont pas exactement les mêmes pour un anneau et pour un cercle.
@@ -274,6 +276,7 @@ Autrement, nous pourrions utiliser la classe Circle en instanciant deux cercles 
 
 **3. Write equals.**
 
+	//version avec héritage
     @Override
 	public int hashCode() {
 		final int prime = 31;
