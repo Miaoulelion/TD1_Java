@@ -35,7 +35,7 @@ On voit les différentes possibilités à faire ressemblant au texte “set”. 
 
 **7. (at home) It is sometime useful to check the source code from the JDK. Down-load the file called src.zip from Oracle's website and attach it in Window - Preferences { Installed JREs - Edit - rt.jar - Source Attachment. Now declare a String variable and clic on String with Ctrl key pressed. What happens ?**
 
-=> Cela nous mène à la classe String où on peut voir toutes les méthodes associés etc...
+=> Cela nous mène à la déclaration de la classe String où on peut voir toutes les méthodes associés etc... Cela permet de voir comment est effectué une méthode spécifiquement.
 
 
 
