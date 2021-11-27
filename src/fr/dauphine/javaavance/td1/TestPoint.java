@@ -33,12 +33,13 @@ public class TestPoint {
 		//pLine.add(new Point(4,4));
 		//pLine.add(null);
 		
-		Circle c=new Circle(new Point(1,2), 1); 
+		Circle c=new Circle(new Point(1,2), 1);
 		c.getCenter().translate(1,1); 
 		System.out.println(c);
 
-		RingInheritence r = new RingInheritence(p1, 2, 3);
+		RingInheritence r = new RingInheritence(p1, 2, 4);
 		System.out.println(r);
+		System.out.println(r.contains(new Point(1,5)));
 
 
 	}
