@@ -28,6 +28,9 @@ public class PolylineArray {
 	
 	public void add(Point p) {
 		Objects.requireNonNull(p);
+		if(this.pointCapacity<=this.newIndex) {
+			throw new IllegalStateException();
+		}
 		this.array[this.newIndex]=p;
 		++this.newIndex;
 	}

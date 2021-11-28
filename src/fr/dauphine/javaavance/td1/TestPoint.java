@@ -28,7 +28,7 @@ public class TestPoint {
 		System.out.println(list.indexOf(p2));
 		System.out.println(list.indexOf(p3));
 		
-		PolylineArray pLine = new PolylineArray(2);
+		PolylineArray pLine = new PolylineArray(1);
 		pLine.add(p1);
 		//pLine.add(new Point(4,4));
 		//pLine.add(null);
