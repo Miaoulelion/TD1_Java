@@ -53,11 +53,11 @@ Create a new class Point with two private fields x and y. Add a method with the 
 	Point p=new Point();
 	System.out.println(p.x+" "+p.y)
 
-=> Cela fonctionne car les champs privés d’une classe sont accessibles à l’intérieur de celle-ci. Ainsi, on peut créer une méthode utilisant x et y à l’intérieur de l’objet Point.
+=> Cela fonctionne car les champs privés d’une classe sont accessibles à l’intérieur de celle-ci. Ainsi, on peut créer une méthode utilisant x et y à l’intérieur de l’objet Point. Pour la création de la classe Point, nous avons supposé que les coordonnées x et y sont des entiers (int) à partir des bouts de code donnés pour l'exercice suivant.
 
 **2. Create a class TestPoint with a main and the same code as before. What happens ? How can we fix it ?**
 
-=> Deux exceptions sont levées (“The field Point.x is not visible, The field Point.y is not visible”). Pour corriger ce problème, il faut créer des méthodes publiques (getter) qui permettront de renvoyer les valeurs de x et de y.
+=> Deux exceptions sont levées (“The field Point.x is not visible, The field Point.y is not visible”). Pour corriger ce problème, il faut créer des méthodes publiques (getter) qui permettront de retourner les valeurs de x et de y à l'extérieur de l'objet Point.
 
 	public int getX() {
 		return this.x;
@@ -73,7 +73,7 @@ Create a new class Point with two private fields x and y. Add a method with the 
 
 **5. Create a constructor with two arguments (called px and py). What is the problem ?**
 
-=> Lorsqu’aucun constructeur n’est défini, un constructeur par défaut est appelé. En créant un constructeur avec deux arguments, cela “remplace” le constructeur par défaut. Lors de la compilation une exception “The constructor Point() is undefined” est levée car le constructeur sans argument n’est plus défini.
+=> Lorsqu’aucun constructeur n’est défini, un constructeur par défaut est appelé. En créant un constructeur avec deux arguments, cela “remplace” le constructeur par défaut. Lors de la compilation une exception “The constructor Point() is undefined” est levée car le constructeur sans argument n’est plus défini. Il faut en réécrire un sans argument.
 
 **6. Modify the parameters of the constructor to call them x and y. What happens ?**
 
@@ -81,7 +81,7 @@ Create a new class Point with two private fields x and y. Add a method with the 
 
 **7. We would like to keep track of the number of Points that have been created so far. How to proceed ?**
 
-Un champ static de type int peut être ajouté à la classe Point. Ce champ s'incrémente à chaque instanciation de la classe. Un accessor doit être ajouté (getcpt()) pour accéder à la valeur du compteur en dehors de la classe.
+=> Un champ static de type int peut être ajouté à la classe Point. Ce champ s'incrémentera à chaque instanciation de la classe. Un accessor doit être ajouté (getcpt()) pour accéder à la valeur du compteur en dehors de la classe.
 
 	public class Point {
 		private int x;
@@ -119,7 +119,7 @@ Un champ static de type int peut être ajouté à la classe Point. Ce champ s'in
 
 **1. What does this code print ? Why ?**
 
-=> La première écriture booléenne est “True” car les deux variables ont la même référence mémoire, tandis que la seconde renvoie false car bien que les deux objets p1 et p3 ont des champs égaux, ils n’ont pas le même espace mémoire. 
+=> La première écriture booléenne est “True” car les deux variables ont la même référence mémoire, tandis que la seconde renvoie false car bien que les deux objets p1 et p3 ont des champs égaux, ils n’ont pas la même référence mémoire. 
 
 **2. 2. Write a method isSameAs(Point) that will return true if the two points have the same coordinates.**
 
@@ -132,18 +132,18 @@ Un champ static de type int peut être ajouté à la classe Point. Ce champ s'in
 
 **3. What is the problem with this code ? Read the documentation of indexOf and check which method is called. Modify the Point class to fix this problem.**
 
-=> Le problème est qu’on va faire list.indexOf(p3) alors que ce point n’est pas dans la liste. De plus, on l’appel list.indexOf(p2) va retourner true car p1 et p2 sont le “même” objet (ils partagent le même espace mémoire). La méthode equals() est appelée dans la méthode indexOf().
-Ainsi, pour résoudre ce problème, il faut implémenter les méthodes equals() et hashcode() pour la classe Point, ce qui permet à la méthode indexOf() de List d’identifier les instances de Point “égales”.
+=> La méthode equals() est appelée par la méthode indexOf() de List. Par défaut, lorsque la méthode equals() n'est pas implémentée, elle compare les références mémoires des objets et renvoie True si celle-ci sont identiques. L'appel list.indexOf(p3) va renvoyer "-1" ("non trouvé") car que ce point n’est "équals" à aucun Point dans la liste, bien qu'il ait les mêmes valeurs que p1. L’appel list.indexOf(p2) quant à lui, puisque p1 et p2 sont le “même” objet (ils partagent la même référence mémoire), le même index sera renvoyé. 
+Ainsi, pour que l'appel à list.indexOf(p3) puisse fonctionner, il faut implémenter les méthodes equals() et hashcode() pour la classe Point. La méthode indexOf() de List pourra identifier les instances de Point “égales".
 
 ## Exercice 4
 
 **Write a method add that can be used to add a new point to the line. What happens if we add more points that the maximum capacity of the array ? What to do about it ?**
 
-=> Lorsqu’on dépasse la capacité du tableau, une exception est levée : “java.lang.ArrayIndexOutOfBoundsException: Index 2 out of bounds for length 2”. Nous pourrions empêcher l’ajout d’une Point supplémentaire dans la méthode add() lorsque this.pointCapacity est égal à this.array.length, ou encore lever une exception.
+=> Lorsqu’on dépasse la capacité du tableau, une exception est levée : “java.lang.ArrayIndexOutOfBoundsException: Index 2 out of bounds for length 2”. Nous pourrions empêcher l’ajout d’un Point supplémentaire dans la méthode add() lorsque this.pointCapacity est égal à this.array.length, ou encore lever une exception avec l'ajout.
 
 **5. What happens if null is given instead of an actual Point object ? What if you do add(null) before ? Read about Objects.requireNonNull(o).**
 
-=> Si on donne “null” au lieu d’un objet “Point”, rien ne se passe, la méthode add() fonctionne et la référence “null” est ajoutée au tableau de Point. L’utilisation de Objects.requireNonNull(o) permet de tester l’objet donné en paramètre et de lever une exception lorsque l’objet est null. Ainsi, lorsque null est donné en paramètre de la méthode add(), l’exception java.lang.NullPointerException est levée.
+=> Si on donne “null” au lieu d’un objet “Point”, la méthode add() fonctionne de manière normale et la référence “null” est ajoutée au tableau de Point. L’utilisation de Objects.requireNonNull(o) permet de tester l’objet donné en paramètre et de lever une exception lorsque l’objet est null. Ainsi, lorsque null est donné en paramètre de la méthode add(), l’exception java.lang.NullPointerException est levée, et il ne pourra être ajouté.
 
 **6. Update the class and use a LinkedList instead of an array (and remove the maximum capacity limit). How to update pointCapacity, nbPoints and contains ?**
 
@@ -196,7 +196,7 @@ On peut créer une méthode void qui somme les valeurs des coordonnées de notre
 	System.out.println(c+" "+c2);
 
 => Le problème avec ce code est que les deux cercles ont le même Point pour centre. Ainsi, lors de l’utilisation de la méthode translate() par le Cercle c2, cela entraîne également la translation de c1.
-Pour résoudre ce problème, on pourrait créer une copie du Point passé en paramètre lors de la création du cercle. Ainsi, les centres de c1 et c2 auraient des adresses mémoires différentes.
+Pour résoudre ce problème, on pourrait créer une copie du Point passé en paramètre lors de la création du cercle. Ainsi, les centres de c1 et c2 auraient des adresses mémoires différentes, et la translation de l'un n'entrainerait plus la translation de l'autre.
 
 	public Circle(Point center, int radius) {
 		if(radius<=0) {
@@ -217,6 +217,10 @@ Pour résoudre ce problème, on pourrait créer une copie du Point passé en par
 Circle [center=2 3, radius=1]
 
 => La méthode getCenter() renvoie le Point qui définit le centre du cercle (Circle) qui possède lui même la méthode translate(). Donc, il serait possible de modifier les coordonnées du centre du cercle de manière inappropriée, sans passer par la méthode translate() propre au cercle. Un moyen d’éviter ce problème est d’envoyer une copie, un Point qui a les mêmes coordonnées que celles du centre.
+
+	public Point getCenter() {
+		return new Point(this.center.getX(), this.center.getY());
+	}
 
 Résultat du Syso après modification : Circle [center=1 2, radius=1]
 
